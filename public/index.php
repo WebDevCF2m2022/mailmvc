@@ -11,7 +11,10 @@ require_once "../model/MailModel.php"; # send mail
 
 # Connexion
 try{
-    $PDOConnect = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME.';charset='. DB_CHARSET.';port='.DB_PORT, DB_LOGIN, DB_PWD);
+    # $PDOConnect = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME.';charset='. DB_CHARSET.';port='.DB_PORT, DB_LOGIN, DB_PWD);
+    $MysqliConnect = mysqli_connect(DB_HOST,DB_LOGIN,DB_PWD,DB_NAME,DB_PORT);
+    mysqli_set_charset($MysqliConnect, DB_CHARSET);
+
 }catch(Exception $e){
     exit($e->getMessage());
 }

@@ -1,18 +1,12 @@
 # mailmvc
-mail en PHP 8 mvc procédural avec insertion dans la DB
+mail en PHP 8 mvc procédural avec insertion dans la DB en PDO
 
-## Version PDO
+## A faire
+- Enregistrez sous le fichier `config.php.ini` en `config.php`
+- Importez le dernier fichier `mailmvc-2023-...sql` dans MariaDB
 
-https://github.com/WebDevCF2m2022/mailmvc/tree/structurePDO
+## Login
 
-Avec exemple ici :
+username = "admin"
 
-http://mailmvc.webdev-cf2m.be/
-
-login et mot de passe :
-- admin
-- mdpadmin27
-
-## Version mysqli
-
-En cours
+password = "mdpadmin27"

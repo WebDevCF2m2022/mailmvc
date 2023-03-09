@@ -2,18 +2,21 @@
 
 /**
  * fonction qui récupère les messages pour l'administrateur
- * @param PDO $c
+ * @param mysqli $c
  * @return array|string
  */
-function getAllMessages(PDO $c): array|string
+function getAllMessages(mysqli $c): array|string
 {
     $sql = "SELECT * FROM messages ORDER BY messagesdate DESC";
     try {
-        $query = $c->query($sql);
-        if($query->rowCount()==0){
+        $query = mysqli_query($c,$sql);
+        #$query = $c->query($sql);
+        #if($query->rowCount()==0){
+        if(mysqli_num_rows($query)===0){
             return "Pas encore de messages";
         }else{
-            return $query->fetchAll(PDO::FETCH_ASSOC);
+            #return $query->fetchAll(PDO::FETCH_ASSOC);
+            return mysqli_fetch_all($query,MYSQLI_ASSOC);
         }
 
     } catch (Exception $e) {

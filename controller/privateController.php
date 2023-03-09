@@ -8,7 +8,7 @@ if (isset($_GET['disconnect'])) {
 }
 
 
-$responseMessages = getAllMessages($PDOConnect);
+$responseMessages = getAllMessages($MysqliConnect);
 
 if(is_string($responseMessages)){
     $message = $responseMessages;

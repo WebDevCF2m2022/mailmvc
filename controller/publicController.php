@@ -1,5 +1,6 @@
 <?php
 
+// on veut se connecter
 if(isset($_POST['username'],$_POST['password'])){
     $user = htmlspecialchars(strip_tags(trim($_POST['username'])),ENT_QUOTES);
     $pwd = htmlspecialchars(strip_tags(trim($_POST['password'])),ENT_QUOTES);
@@ -11,6 +12,24 @@ if(isset($_POST['username'],$_POST['password'])){
     }else{
         header("Location: ./");
         exit();
+    }
+}
+
+// on veut envoyer un message
+if(isset($_POST['messagesmail'],$_POST['messagestext'])){
+    $mail = filter_var(trim($_POST['messagesmail']),FILTER_VALIDATE_EMAIL);
+    $messageDB = htmlspecialchars(strip_tags(trim($_POST['messagestext'])),ENT_QUOTES);
+    $messageMail = addslashes(strip_tags(trim($_POST['messagestext'])));
+
+    if($mail==false || empty($messageDB)){
+        $message = "Mail et/ou message non valides, veuillez recommencer !";
+    }else{
+        $insert = insertMessages($PDOConnect,$mail,$messageDB);
+        if(is_string($insert)){
+            $message = $insert;
+        }else{
+            $message = "Votre message à bien été envoyé!";
+        }
     }
 
 }

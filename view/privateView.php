@@ -41,13 +41,23 @@
                 <h3>Voir les messages : </h3>
             </header>
 
-                    <?php
-                    if (isset($message)):
-                        ?>
-                        <button type="button" class="btn btn-warning"><?= $message ?></button><br>
-                    <?php
-                    endif;
+            <?php
+            if (isset($message)):
+                ?>
+                <button type="button" class="btn btn-warning"><?= $message ?></button><br>
+            <?php
+            else:
+                foreach ($responseMessages as $item):
                     ?>
+                <article>
+                    <h4>Date : <?=$item['messagesdate']?> Par <?=$item['messagesmail']?></h4>
+                    <p><?=nl2br($item['messagestext'])?></p>
+                </article>
+                <?php
+                endforeach;
+            endif;
+            ?>
+
 
             <?php
             var_dump($_SESSION, $_POST);

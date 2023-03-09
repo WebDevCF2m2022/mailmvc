@@ -7,11 +7,11 @@ if (isset($_GET['disconnect'])) {
     }
 }
 
-if (isset($_POST['messagesmail'], $_POST['messagestext'])) {
-    $user = filter_var(trim($_POST['messagesmail']), FILTER_VALIDATE_EMAIL);
-    $pwd = htmlspecialchars(strip_tags(trim($_POST['messagestext'])), ENT_QUOTES);
 
+$responseMessages = getAllMessages($PDOConnect);
 
+if(is_string($responseMessages)){
+    $message = $responseMessages;
 }
 
 require_once "../view/privateView.php";

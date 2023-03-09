@@ -31,6 +31,10 @@ function connectUsers(PDO $c, string $login, string $pwd): bool|string
     }
 }
 
+/**
+ * déconnexion de l'utilisateur
+ * @return bool
+ */
 function disconnectUsers():bool{
     $_SESSION = [];
 

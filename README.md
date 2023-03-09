@@ -15,4 +15,4 @@ login et mot de passe :
 
 ## Version mysqli
 
-En cours
+https://github.com/WebDevCF2m2022/mailmvc/tree/structureMYSQLI

@@ -6,6 +6,7 @@ session_start();
 require_once "../config.php";# DB
 require_once "../model/UsersModel.php"; # table users
 require_once "../model/MessagesModel.php"; # table messages
+require_once "../model/MailModel.php"; # send mail
 
 
 # Connexion

@@ -4,6 +4,8 @@ session_start();
 
 # Dependencies
 require_once "../config.php";# DB
+require_once "../model/UsersModel.php"; # table users
+require_once "../model/MessagesModel.php"; # table messages
 
 
 # Connexion

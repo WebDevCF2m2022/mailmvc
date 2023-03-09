@@ -24,7 +24,7 @@ if(isset($_POST['messagesmail'],$_POST['messagestext'])){
     if($mail==false || empty($messageDB)){
         $message = "Mail et/ou message non valides, veuillez recommencer !";
     }else{
-        $insert = insertMessages($PDOConnect,$mail,$messageDB);
+        $insert = insertMessages($MysqliConnect,$mail,$messageDB);
         if(is_string($insert)){
             $message = $insert;
         }else{

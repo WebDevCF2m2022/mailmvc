@@ -23,16 +23,20 @@ function getAllMessages(PDO $c): array|string
 
 /**
  * Insertion d'un message dans la DB
- * @param PDO $c
+ * @param mysqli $c
  * @param string $mail
  * @param string $message
  * @return bool|string
  */
-function insertMessages(PDO $c, string $mail, string $message): bool|string{
-    $sql = "INSERT INTO `messages` (`messagesmail`, `messagestext`) VALUES (?, ?);";
-    $query = $c->prepare($sql);
+function insertMessages(mysqli $c, string $mail, string $message): bool|string{
+    $mail = mysqli_real_escape_string($c,$mail);
+    $message = mysqli_real_escape_string($c,$message);
+    $sql = "INSERT INTO `messages` (`messagesmail`, `messagestext`) VALUES ('$mail', '$message');";
+    #$sql = "INSERT INTO `messages` (`messagesmail`, `messagestext`) VALUES (?, ?);";
+    #$query = $c->prepare($sql);
     try {
-        $query->execute([$mail,$message]);
+        mysqli_query($c,$sql);
+        #$query->execute([$mail,$message]);
         return true;
     } catch (Exception $e) {
         return $e->getMessage();

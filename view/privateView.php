@@ -15,35 +15,14 @@
 <!-- Responsive navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="./">Mailmvc</a>
+        <a class="navbar-brand" href="./">Mailmvc - admin</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
                     class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link active" href="./">Accueil</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">Connexion</a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <form name="connexion" action="" method="post">
-                            <li class="dropdown-item" style="display: flex;justify-content: space-around;">
-                                <input name="username" class="dropdown-item" placeholder="Votre nom d'utilisateur"
-                                       required></input>
-                            </li>
-                            <li class="dropdown-item" style="display: flex;justify-content: space-around;">
-                                <input name="password" class="dropdown-item" placeholder="Votre mot de passe"
-                                       required></input>
-                            </li>
-
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li class="dropdown-item" style="display: flex;justify-content: space-around;">
-                                <input type="submit" class="btn btn-primary"></input>
-                        </form>
-                    </ul>
-                </li>
+                <li class="nav-item"><a class="nav-link" href="./?disconnect">Déconnexion</a></li>
 
             </ul>
         </div>
@@ -56,14 +35,12 @@
             <!-- Post header-->
             <header class="mb-4">
                 <!-- Post title-->
-                <h1 class="fw-bolder mb-1">MailMVC</h1>
+                <h1 class="fw-bolder mb-1">MailMVC - admin</h1>
                 <hr>
 
-                <h3>Envoyez moi un message : </h3>
+                <h3>Voir les messages : </h3>
             </header>
 
-            <form method="POST" action="" name="messages">
-                <div class="mb-3">
                     <?php
                     if (isset($message)):
                         ?>
@@ -71,18 +48,7 @@
                     <?php
                     endif;
                     ?>
-                    <label for="exampleFormControlInput1" class="form-label">Votre adresse mail</label>
-                    <input name="messagesmail" type="email" class="form-control" id="exampleFormControlInput1"
-                           placeholder="name@example.com" required>
-                </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Votre commentaire</label>
-                    <textarea name="messagestext" class="form-control" id="exampleFormControlTextarea1" rows="5"
-                              required></textarea>
-                </div>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
             <?php
             var_dump($_SESSION, $_POST);
             ?>

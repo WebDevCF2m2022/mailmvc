@@ -57,47 +57,48 @@
             <header class="mb-4">
                 <!-- Post title-->
                 <h1 class="fw-bolder mb-1">MailMVC</h1>
+                <hr>
 
                 <h3>Envoyez moi un message : </h3>
-                <form method="POST" action="" name="messages">
-                    <div class="mb-3">
-                        <?php
-                        if (isset($message)):
-                            ?>
-                            <button type="button" class="btn btn-warning"><?= $message ?></button><br>
-                        <?php
-                        endif;
-                        ?>
-                        <label for="exampleInputEmail1" class="form-label">Username</label>
-                        <input name="username" type="text" class="form-control" id="exampleInputEmail1"
-                               aria-describedby="emailHelp" required>
-                        <div id="emailHelp" class="form-text">username</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input name="userpwd" type="password" class="form-control" id="exampleInputPassword1" required>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-                <?php
-                var_dump($_SESSION, $_POST);
-                ?>
-
-                <a href="./">Retour sur notre site !</a>
             </header>
+
+            <form method="POST" action="" name="messages">
+                <div class="mb-3">
+                    <?php
+                    if (isset($message)):
+                        ?>
+                        <button type="button" class="btn btn-warning"><?= $message ?></button><br>
+                    <?php
+                    endif;
+                    ?>
+                    <label for="exampleFormControlInput1" class="form-label">Votre adresse mail</label>
+                    <input name="messagesmail" type="email" class="form-control" id="exampleFormControlInput1"
+                           placeholder="name@example.com" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Votre commentaire</label>
+                    <textarea name="messagestext" class="form-control" id="exampleFormControlTextarea1" rows="5"
+                              required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <?php
+            var_dump($_SESSION, $_POST);
+            ?>
 
 
         </div>
-
-        <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; mailmvc <?= date("Y") ?></p>
-            </div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+    </div>
+</div>
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; mailmvc <?= date("Y") ?></p>
+    </div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
 </body>
 </html>

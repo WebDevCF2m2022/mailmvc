@@ -104,3 +104,48 @@ if ($mail == false || empty($messageDB)) {
     }
 # ...
 ```
+
+Ensuite utilisez Mailer pour l'envoi des mails :
+
+```php
+<?php
+# mailmvc\controller\publicController.php
+
+# ...
+} else {
+
+            // Pour l'admin
+            $email = (new Email())
+                ->from(MAIL_FROM)
+                ->to(MAIL_ADMIN)
+                //->cc('cc@example.com')
+                //->bcc('bcc@example.com')
+                //->replyTo('fabien@example.com')
+                //->priority(Email::PRIORITY_HIGH)
+                ->subject('Un nouveau message est arrivé sur votre site !')
+                ->text('Un nouveau message est arrivé sur votre site !\r\n \r\n Posté par ' . $mail)
+                ->html('<p>Un nouveau message est arrivé sur votre site !<br><br>Posté par ' . $mail . '</p>');
+
+            $mailer->send($email);
+
+            // Pour l'utilisateur
+            $email = (new Email())
+                ->from(MAIL_FROM)
+                ->to($mail)
+                //->cc('cc@example.com')
+                //->bcc('bcc@example.com')
+                //->replyTo('fabien@example.com')
+                //->priority(Email::PRIORITY_HIGH)
+                ->subject('Votre message a bien été posté !')
+                ->text('Votre message a bien été posté !\r\n \r\n sur le site https://mailmvc.webdev-cf2m.be/')
+                ->html('<p>Votre message a bien été posté !<br><br>sur le site  https://mailmvc.webdev-cf2m.be/</p>');
+
+            $mailer->send($email);
+
+
+            $message = "Votre message à bien été envoyé!";
+
+
+        }
+# ...
+```

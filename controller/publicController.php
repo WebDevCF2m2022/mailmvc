@@ -1,6 +1,15 @@
 <?php
 # mailmvc\controller\publicController.php
 
+# Librairies for Mailer
+use Symfony\Component\Mailer\Transport;
+use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mime\Email;
+
+// création des variables pour l'envoi de mail
+$transport = Transport::fromDsn(DNS_MAILER);
+$mailer = new Mailer($transport);
+
 // on veut se connecter
 if (isset($_POST['username'], $_POST['password'])) {
     $user = htmlspecialchars(strip_tags(trim($_POST['username'])), ENT_QUOTES);
@@ -29,6 +38,35 @@ if (isset($_POST['messagesmail'], $_POST['messagestext'])) {
         if (is_string($insert)) {
             $message = $insert;
         } else {
+            $email = (new Email())
+                ->from(MAIL_FROM)
+                ->to(MAIL_ADMIN)
+                //->cc('cc@example.com')
+                //->bcc('bcc@example.com')
+                //->replyTo('fabien@example.com')
+                //->priority(Email::PRIORITY_HIGH)
+                ->subject('Un nouveau message est arrivé sur votre site !')
+                ->text('Un nouveau message est arrivé sur votre site !\r\n \r\n Posté par ' . $mail)
+                ->html('<p>Un nouveau message est arrivé sur votre site !<br><br>Posté par ' . $mail . '</p>');
+
+            $envoi = $mailer->send($email);
+
+            $email = (new Email())
+                ->from(MAIL_FROM)
+                ->to($mail)
+                //->cc('cc@example.com')
+                //->bcc('bcc@example.com')
+                //->replyTo('fabien@example.com')
+                //->priority(Email::PRIORITY_HIGH)
+                ->subject('Votre message a bien été posté !')
+                ->text('Votre message a bien été posté !\r\n \r\n sur le site https://mailmvc.webdev-cf2m.be/')
+                ->html('<p>Votre message a bien été posté !<br><br>sur le site  https://mailmvc.webdev-cf2m.be/</p>');
+
+
+            $message = "Votre message à bien été envoyé!";
+
+            $envoi2 = $mailer->send($email);
+
             /*
             $message = "Votre message à bien été envoyé!";
             // pour l'admin du site

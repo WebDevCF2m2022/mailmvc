@@ -73,6 +73,35 @@ require_once "../vendor/autoload.php";
 
 ```
 
+Vous remarquerez que `config.php` a de nouvelles constantes :
+
+```php
+<?php
+
+// paramètres de connexions
+const DB_HOST = "localhost";
+const DB_LOGIN = "root";
+const DB_PWD = "";
+const DB_NAME = "mailmvc";
+const DB_PORT = 3307;
+const DB_CHARSET = "utf8mb4";
+
+
+// mail pour webdev-cf2m.be
+const MAIL_FROM = "no-reply@webdev-cf2m.be";
+const MAIL_SERVER = "smtp.webmo.fr";
+const MAIL_PWD = "...";# the PWD
+const MAIL_PORT = 587;
+const DNS_MAILER = "smtp://" . MAIL_FROM . ":" . MAIL_PWD . "@" . MAIL_SERVER . ":" . MAIL_PORT;
+
+
+// mail de l'admin du site
+const MAIL_ADMIN = "michael.j.pitz@gmail.com";
+
+```
+
+#### Je vous donnerai le mot de passe pour garder la confidentialité de celui-ci!
+
 Ouvrez ensuite `mailmvc\controller\publicController.php` et commentez les lignes d'envoi de mail
 
 ```php

@@ -22,3 +22,19 @@ https://packagist.org/packages/symfony/mailer
 et celle-ci :
 
 https://symfony.com/doc/current/mailer.html
+
+Vérifiez que php en version 8 soit bien dans vos variables d'environnement en ouvrant la console :
+
+    php -v
+
+Dans le cas contraire, rajoutez le.
+
+### composer
+
+Lorsque la version de PHP est détectée, installez composer :
+
+https://getcomposer.org/download/
+
+Puis testez-le en tapant dans la console :
+
+    composer self-update

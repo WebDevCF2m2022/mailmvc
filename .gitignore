@@ -3,3 +3,6 @@
 
 # Config
 config.php
+
+# External Librairies
+vendor

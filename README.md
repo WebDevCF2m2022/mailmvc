@@ -13,7 +13,7 @@ username = "admin"
 
 password = "mdpadmin27"
 
-## Utilisation de mailer
+## Utilisation de Mailer
 
 Vous trouverez toute la documentation à cette adresse :
 
@@ -38,3 +38,11 @@ https://getcomposer.org/download/
 Puis testez-le en tapant dans la console :
 
     composer self-update
+
+### Installation de Mailer
+
+Ensuite installez à la racine de `mailmvc`
+
+    composer require symfony/mailer
+
+#### Rajoutez de dossier `vendor` dans le .gitignore !

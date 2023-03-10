@@ -31,14 +31,14 @@ if(isset($_POST['messagesmail'],$_POST['messagestext'])){
             $message = "Votre message à bien été envoyé!";
 
             // pour l'admin du site
-            $mailMessage = "Mail envoyé par $mail \r\n \r\n ".$messageMail;
-            $envoi = sendMail(MAIL_SERVER, MAIL_ADMIN, "Message sur votre site", $mailMessage);
-
+            $mailMessage = "Mail envoyé par $mail \r\n \r\n " . $messageMail;
+            $envoi = sendMail(MAIL_FROM, MAIL_ADMIN, "Message sur votre site", $mailMessage);
+            
             // pour l'utilisateur du site
             $mailMessage = "Votre message a bien été envoyé sur le site http://mailmvc.webdev-cf2m.be/";
-            $envoi2 = sendMail(MAIL_SERVER, $mail, "Message du site mailmvc.webdev-cf2m.be", $mailMessage);
+            $envoi2 = sendMail(MAIL_FROM, $mail, "Message du site mailmvc.webdev-cf2m.be", $mailMessage);
             
-            if($envoi===true&&$envoi2==true){
+            if ($envoi === true && $envoi2 == true) {
                 $message .= "<br>Félicitation";
             }
         }

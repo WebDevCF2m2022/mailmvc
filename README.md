@@ -16,3 +16,7 @@ login et mot de passe :
 ## Version mysqli
 
 https://github.com/WebDevCF2m2022/mailmvc/tree/structureMYSQLI
+
+## Version Mailer PDO
+
+https://github.com/WebDevCF2m2022/mailmvc/tree/MailerWithPDO

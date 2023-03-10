@@ -1,4 +1,5 @@
 <?php
+# mailmvc\controller\publicController.php
 
 // on veut se connecter
 if (isset($_POST['username'], $_POST['password'])) {
@@ -28,6 +29,7 @@ if (isset($_POST['messagesmail'], $_POST['messagestext'])) {
         if (is_string($insert)) {
             $message = $insert;
         } else {
+            /*
             $message = "Votre message à bien été envoyé!";
             // pour l'admin du site
             $mailMessage = "Mail envoyé par $mail \r\n \r\n " . $messageMail;
@@ -38,6 +40,7 @@ if (isset($_POST['messagesmail'], $_POST['messagestext'])) {
             if ($envoi === true && $envoi2 == true) {
                 $message .= "<br>Félicitation";
             }
+            */
         }
     }
 }

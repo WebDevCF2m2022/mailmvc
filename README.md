@@ -45,4 +45,62 @@ Ensuite installez à la racine de `mailmvc`
 
     composer require symfony/mailer
 
+ou si vous avez chargé ce répertoire (vous avez un fichier `composer.json` à la racine du projet)
+
+    composer install
+
 #### Rajoutez de dossier `vendor` dans le .gitignore !
+
+Ensuite chargez l'autoloader de composer dans votre contrôleur frontal, après le fichier `config.php` !
+
+Notez que `../model/MailModel.php` n'est plus nécessaire
+
+```php
+<?php
+# mailmvc\public\index.php
+
+# PHP SESSION CONNECT
+session_start();
+
+
+# Dependencies
+require_once "../config.php"; # DB
+require_once "../model/UsersModel.php"; # table users
+require_once "../model/MessagesModel.php"; # table messages
+
+# Autoload external Librairies (Mailer)
+require_once "../vendor/autoload.php";
+
+```
+
+Ouvrez ensuite `mailmvc\controller\publicController.php` et commentez les lignes d'envoi de mail
+
+```php
+<?php
+# mailmvc\controller\publicController.php
+
+# ...
+
+if ($mail == false || empty($messageDB)) {
+        $message = "Mail et/ou message non valides, veuillez recommencer !";
+    } else {
+        $insert = insertMessages($PDOConnect, $mail, $messageDB);
+        if (is_string($insert)) {
+            $message = $insert;
+        } else {
+            /*
+            $message = "Votre message à bien été envoyé!";
+            // pour l'admin du site
+            $mailMessage = "Mail envoyé par $mail \r\n \r\n " . $messageMail;
+            $envoi = sendMail(MAIL_FROM, MAIL_ADMIN, "Message sur votre site", $mailMessage);
+            // pour l'utilisateur du site
+            $mailMessage = "Votre message a bien été envoyé sur le site http://mailmvc.webdev-cf2m.be/";
+            $envoi2 = sendMail(MAIL_FROM, $mail, "Message du site mailmvc.webdev-cf2m.be", $mailMessage);
+            if ($envoi === true && $envoi2 == true) {
+                $message .= "<br>Félicitation";
+            }
+            */
+        }
+    }
+# ...
+```
